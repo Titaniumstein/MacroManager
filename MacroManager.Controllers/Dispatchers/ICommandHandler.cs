@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MacroManager.Views
+namespace MacroManager.Controllers.Dispatchers
 {
-    public class Class1
+    public interface ICommandHandler<TCommand>
     {
+        void Execute(TCommand command);
     }
 }

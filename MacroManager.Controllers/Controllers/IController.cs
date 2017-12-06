@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MacroManager.Controllers
+namespace MacroManager.Controllers.Controllers
 {
-    public class Class1
+    public interface IController
     {
     }
 }

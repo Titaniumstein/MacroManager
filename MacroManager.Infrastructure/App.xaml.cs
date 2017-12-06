@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Infrastructure.Abstractions;
+using MacroContext.Contract.Commands;
+using MacroContext.Contract.Dto;
+using MacroManager.Controllers.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -18,7 +22,15 @@ namespace MacroManager
         {
             var application = new App();
             application.InitializeComponent();
-            application.Run();
+
+            var dispatcher = new CommandDispatcher();
+            var controller = new PackageController(dispatcher);
+            var pkg = new PackageDto(Guid.NewGuid());
+            pkg.Name = "test2";
+
+            controller.AddPackage(pkg);
+
+            //application.Run();
         }
     }
 }
