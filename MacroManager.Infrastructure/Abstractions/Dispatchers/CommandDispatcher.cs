@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MacroManager.Infrastructure.Abstractions
+namespace MacroManager.Infrastructure.Abstractions.Dispatchers
 {
     class CommandDispatcher : ICommandDispatcher
     {

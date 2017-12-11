@@ -8,7 +8,7 @@ using System.ServiceModel;
 using MacroManager.Controllers.Dispatchers;
 using MacroManager.Infrastructure.Services;
 
-namespace MacroManager.Infrastructure.Abstractions
+namespace MacroManager.Infrastructure.Abstractions.Dispatchers
 {
     public class WcfServiceCommandHandlerProxy<TCommand> : ICommandHandler<TCommand>
     {

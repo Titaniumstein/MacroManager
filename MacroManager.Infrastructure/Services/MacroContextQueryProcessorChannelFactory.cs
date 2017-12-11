@@ -30,7 +30,6 @@ namespace MacroManager.Infrastructure.Services
 
         public TResult Submit<TQuery, TResult>(TQuery query)
         {
-            Console.Write(typeof(TResult).Name);
             IQueryProcessorService channel = _channelFactory.CreateChannel();
             var jsonCmd = JsonConvert.SerializeObject(query);
             var jsonResult = channel.Submit(query.GetType().ToString(), jsonCmd);

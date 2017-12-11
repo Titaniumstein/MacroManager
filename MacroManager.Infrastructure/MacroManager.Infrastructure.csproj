@@ -67,10 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Abstractions\QueryDispatcher.cs" />
-    <Compile Include="Abstractions\CommandDispatcher.cs" />
-    <Compile Include="Abstractions\WcfServiceQueryHandlerProxy.cs" />
-    <Compile Include="Abstractions\WcfServiceCommandHandlerProxy.cs" />
+    <Compile Include="Abstractions\Dispatchers\QueryDispatcher.cs" />
+    <Compile Include="Abstractions\Dispatchers\CommandDispatcher.cs" />
+    <Compile Include="Abstractions\Dispatchers\WcfServiceQueryHandlerProxy.cs" />
+    <Compile Include="Abstractions\Dispatchers\WcfServiceCommandHandlerProxy.cs" />
+    <Compile Include="Abstractions\Router.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
