@@ -37,7 +37,7 @@ namespace MacroManager.Infrastructure.IocInstallers
             {
                 
                 var service = GetViewService(viewType);
-                _simpleContainer.Register(service, viewType, Lifestyle.Singleton);
+                _simpleContainer.RegisterSingleton(service, viewType);
                 
             }
 

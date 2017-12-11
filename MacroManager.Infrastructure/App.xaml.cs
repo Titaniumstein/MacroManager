@@ -12,6 +12,7 @@ using System.Windows;
 using MacroManager.Views.Main;
 using MacroManager.Views.Package;
 using MacroManager.Infrastructure;
+using MacroManager.Controllers.IViews.Main;
 
 namespace MacroManager
 {
@@ -25,22 +26,11 @@ namespace MacroManager
         {
             var application = new App();
             application.InitializeComponent();
-
-            //var dispatcher = new CommandDispatcher();
-
-            //var pkg = new PackageDto(Guid.NewGuid());
-            //pkg.Name = "test2";
-
-            //controller.AddPackage(pkg);
             var controller = Bootstrapper.Container.GetInstance<PackageController>();
-            var view = new Views.Main.Index();
-            //var index = new Views.Package.Index();
-            //var create = new Views.Package.Create();
-            //var controller = new PackageController(dispatcher, create, index);
+            var view = Bootstrapper.Container.GetInstance<IViewMain>();
             controller.LoadIndexView();
-            view.Content = controller.IndexView;
-            //view.Content = new Views.Package.Index();
-            application.Run(view);
+            view.Display(controller.IndexView);
+            application.Run((Window)view);
         }
     }
 }

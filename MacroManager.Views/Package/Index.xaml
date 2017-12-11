@@ -5,10 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroManager.Views.Package"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <DockPanel>
+             d:DesignHeight="296.145" d:DesignWidth="300">
+    <StackPanel>
+        <StackPanel  Orientation="Horizontal">
+            <Button Click="Add_Click">Add</Button>
+            <Button Click="Edit_Click">Edit</Button>
+            <Button Click="Detail_Click">Detail</Button>
+            <Button Click="Delete_Click">Delete</Button>
+        </StackPanel>
+
+
+        <DockPanel>
         <DataGrid
             x:Name="dgvPackages"
+            ItemsSource="{Binding Source=_packages}"
             AutoGenerateColumns="False"
             ColumnWidth="*"
             SelectionUnit="FullRow"
@@ -23,17 +33,20 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     x:Name="colName"
+                    Binding="{Binding Name}"
                     Header="Name"
                     Width="*"
                     />
                 <DataGridTextColumn
                     x:Name="colDescription"
+                    Binding="{Binding Description}"
                     Header="Description"
                     Width="*"
                     />
             </DataGrid.Columns>
 
         </DataGrid>
+    
     </DockPanel>
-
+    </StackPanel>
 </UserControl>

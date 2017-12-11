@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Index" Height="574.662" Width="788.176">
     <Grid>
-
+        <ContentControl x:Name="currentContent" Grid.Row="1"/>
     </Grid>
 </Window>
