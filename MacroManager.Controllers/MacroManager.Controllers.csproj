@@ -45,13 +45,34 @@
   <ItemGroup>
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Dispatchers\IQueryHandler.cs" />
+    <Compile Include="Dispatchers\IQueryDispatcher.cs" />
     <Compile Include="Dispatchers\ICommandHandler.cs" />
     <Compile Include="Dispatchers\ICommandDispatcher.cs" />
     <Compile Include="IViews\IView.cs" />
     <Compile Include="IViews\IViewBase.cs" />
-    <Compile Include="IViews\Package\IPackageIndex.cs" />
+    <Compile Include="IViews\Main\IViewMain.cs" />
+    <Compile Include="IViews\Package\IViewDelete.cs" />
+    <Compile Include="IViews\Package\IViewDetail.cs" />
+    <Compile Include="IViews\Package\IViewEdit.cs" />
+    <Compile Include="IViews\Package\IViewCreate.cs" />
+    <Compile Include="IViews\Package\IViewIndex.cs" />
+    <Compile Include="Navigation\IRouter.cs" />
+    <Compile Include="Navigation\RouteHandlers\IRouteHandler.cs" />
+    <Compile Include="Navigation\RouteHandlers\PackageDeleteRouteHandler.cs" />
+    <Compile Include="Navigation\RouteHandlers\PackageDetailRouteHandler.cs" />
+    <Compile Include="Navigation\RouteHandlers\PackageEditRouteHandler.cs" />
+    <Compile Include="Navigation\RouteHandlers\PackageIndexRouteHandler.cs" />
+    <Compile Include="Navigation\RouteHandlers\PackageCreateRouteHandler.cs" />
+    <Compile Include="Navigation\Routes\PackageDeleteRoute.cs" />
+    <Compile Include="Navigation\Routes\PackageDetailRoute.cs" />
+    <Compile Include="Navigation\Routes\PackageEditRoute.cs" />
+    <Compile Include="Navigation\Routes\PackageIndexRoute.cs" />
+    <Compile Include="Navigation\Routes\IRoute.cs" />
+    <Compile Include="Navigation\Routes\PackageCreateRoute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

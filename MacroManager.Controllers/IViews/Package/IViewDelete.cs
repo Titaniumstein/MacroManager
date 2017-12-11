@@ -1,4 +1,5 @@
-﻿using MacroManager.Controllers.Controllers;
+﻿using MacroContext.Contract.Dto;
+using MacroManager.Controllers.Controllers;
 using MacroManager.Controllers.IViews;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace MacroManager.Controllers.IViews.Package
 {
-    public interface IPackageIndex: IView<PackageController>
+    public interface IViewDelete: IView<PackageController>
     {
-        void Initialize(Nullable<Guid> packageId = null);
+        void Initialize(PackageDto package);
 
     }
 }

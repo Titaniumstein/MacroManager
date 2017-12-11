@@ -14,20 +14,60 @@ namespace MacroManager.Controllers.Controllers
 {
     public class PackageController : IController
     {
-        private IPackageIndex _view;
-        private ICommandDispatcher _commandDispatcher;
+        private IViewIndex _indexView;
+        private IViewCreate _createView;
+        private IViewEdit _editView;
+        private IViewDetail _detailView;
+        private IViewDelete _deleteView;
 
-        public PackageController(ICommandDispatcher commandDispatcher)
+        private ICommandDispatcher _commandDispatcher;
+        private IQueryDispatcher _queryDispatcher;
+
+        public IViewBase IndexView { get { return _indexView; } }
+        public IViewBase CreateView { get { return _createView; } }
+        public IViewBase EditView { get { return _editView; } }
+        public IViewBase DetailView { get { return _detailView; } }
+        public IViewBase DeleteView { get { return _deleteView; } }
+
+
+        public PackageController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IViewCreate createView, IViewIndex indexView, IViewEdit editView, IViewDetail detailView, IViewDelete deleteView)
         {
-            //_view = view;
+            _indexView = indexView;
+            _createView = createView;
+            _editView = editView;
+            _detailView = detailView;
+            _deleteView = deleteView;
             _commandDispatcher = commandDispatcher;
+            _queryDispatcher = queryDispatcher;
+
+            _indexView.SetController(this);
+            _createView.SetController(this);
+            _editView.SetController(this);
+            _detailView.SetController(this);
+            _deleteView.SetController(this);
         }
 
 
         public void LoadIndexView(Nullable<Guid> selectPackageId = null)
         {
-            _view.Initialize(selectPackageId);
+            _indexView.Initialize(selectPackageId);
         }
+
+        public void LoadEditView(PackageDto package)
+        {
+            _editView.Initialize(package);
+        }
+
+        public void LoadDetailView(PackageDto package)
+        {
+            _detailView.Initialize(package);
+        }
+
+        public void LoadDeleteView(PackageDto package)
+        {
+            _deleteView.Initialize(package);
+        }
+
 
 
 
@@ -38,45 +78,41 @@ namespace MacroManager.Controllers.Controllers
             _commandDispatcher.Submit(command);
         }
 
+        public void EditPackage(PackageDto package)
+        {
 
+            var command = new EditPackageCommand(package);
+            _commandDispatcher.Submit(command);
+        }
 
-        //public PackageDto[] GetAllPackages()
-        //{
-        //    var query = new GetAllPackagesQuery();
+        public void RemovePackage(PackageDto package)
+        {
 
-        //}
-
-        //public void LoadEditView(PatientDto patient)
-        //{
-        //    _viewsPkg.EditView.BindToPatient(patient);
-        //}
-
-        //public void LoadCreateView(PatientDto defaultPatientProperties)
-        //{
-        //    _viewsPkg.CreateView.BindToPatient(defaultPatientProperties);
-        //}
+            var command = new RemovePackageCommand(package);
+            _commandDispatcher.Submit(command);
+        }
 
 
 
+        public PackageDto[] GetAllPackages()
+        {
+            var query = new GetAllPackagesQuery();
+            var results = _queryDispatcher.Submit(query);
+            return results;
+
+        }
 
 
 
 
-        //public bool AddPatient(PatientDto patient, ContactInfoDto contactInfo, HealthIdentificationDto healthId)
-        //{
-        //    contactInfo.Address = new ValueObjects.ContactInformation.Address();
-        //    contactInfo.PrimaryPhoneNumber = new ValueObjects.ContactInformation.PhoneNumber();
-        //    contactInfo.SecondaryPhoneNumber = new ValueObjects.ContactInformation.PhoneNumber();
-        //    healthId.Healthcard = new ValueObjects.Health.Healthcard(); //temp
 
-        //    bool success = false;
-        //    var command = new AddPatientCommand(patient, contactInfo, healthId);
-        //    _callback.Completed += () => success = true;
-        //    _commandDispatcher.Execute(command);
-        //    return success;
-        //    //return result;
 
-        //}
+
+
+
+
+
+
 
 
 
@@ -93,17 +129,7 @@ namespace MacroManager.Controllers.Controllers
         //}
 
 
-        //public bool UpdatePatient(PatientDto patient)
-        //{
 
-        //    bool success = false;
-
-        //    var command = new UpdatePatientCommand(patient);
-        //    _callback.Completed += () => success = true;
-        //    //command.NotifyOnCompletion += (cmd, args) => result.ActionSucceeded = args.Success;
-        //    _commandDispatcher.Execute(command);
-        //    return success;
-        //}
 
         //public PatientDto GetPatient(Guid patientId)
         //{
