@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleInjector;
-using Infrastructure.Abstractions;
 using MacroManager.Controllers.Dispatchers;
+using MacroManager.Infrastructure.Abstractions;
 
 namespace MacroManager.Infrastructure.IocInstallers
 {
@@ -15,8 +15,12 @@ namespace MacroManager.Infrastructure.IocInstallers
         public static void RegisterServices(Container _simpleContainer)
         {
             _simpleContainer.RegisterSingleton<ICommandDispatcher>(new CommandDispatcher());
+            _simpleContainer.RegisterSingleton<IQueryDispatcher>(new QueryDispatcher());
+
 
             _simpleContainer.Register(typeof(ICommandHandler<>), typeof(WcfServiceCommandHandlerProxy<>));
+            _simpleContainer.Register(typeof(IQueryHandler<,>), typeof(WcfServiceQueryHandlerProxy<,>));
+
 
         }
     }
