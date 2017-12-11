@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SimpleInjector;
 using MacroManager.Controllers.Dispatchers;
 using MacroManager.Infrastructure.Abstractions;
+using MacroManager.Infrastructure.Abstractions.Dispatchers;
 
 namespace MacroManager.Infrastructure.IocInstallers
 {
