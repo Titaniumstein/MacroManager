@@ -1,4 +1,6 @@
 ﻿using MacroManager.Controllers.IViews.Main;
+using MacroManager.Controllers.Navigation;
+using MacroManager.Controllers.Navigation.Routes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,32 +13,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MacroManager.Controllers.IViews;
-using MacroManager.Controllers.Navigation;
 
 namespace MacroManager.Views.Main
 {
     /// <summary>
-    /// Interaction logic for Index.xaml
+    /// Interaction logic for NavBar.xaml
     /// </summary>
-    public partial class Index : Window, IViewMain
+    public partial class NavBar : UserControl
     {
-
-        public Index(IRouter router)
-        {
-            InitializeComponent();
-            navBar.SetRouter(router);
-        }
-
+        private IRouter _router;
         public string Text { get; set; }
 
 
-        public void Display(IViewBase view)
+        public NavBar()
         {
-            currentContent.Content = null;
-            currentContent.Content = view;
+            InitializeComponent();
+        }
 
+        public void SetRouter(IRouter router)
+        {
+            _router = router;
+        }
+
+        private void Packages_Click(object sender, RoutedEventArgs e)
+        {
+            _router.GoTo(new PackageIndexRoute());
         }
     }
 }

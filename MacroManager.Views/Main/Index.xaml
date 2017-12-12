@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MacroManager.Views.Main"
         mc:Ignorable="d"
         Title="Index" Height="574.662" Width="788.176">
-    <Grid>
+    <DockPanel>
+        <local:NavBar x:Name="navBar" DockPanel.Dock="Top" />
         <ContentControl x:Name="currentContent" Grid.Row="1"/>
-    </Grid>
+    </DockPanel>
 </Window>
