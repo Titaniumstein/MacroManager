@@ -29,7 +29,7 @@ namespace MacroManager
             var controller = Bootstrapper.Container.GetInstance<PackageController>();
             var view = Bootstrapper.Container.GetInstance<IViewMain>();
             controller.LoadIndexView();
-            view.Display(controller.IndexView);
+            view.Display(controller.Views.IndexView);
             application.Run((Window)view);
         }
     }

@@ -14,66 +14,46 @@ namespace MacroManager.Controllers.Controllers
 {
     public class PackageController : IController
     {
-        private IViewIndex _indexView;
-        private IViewCreate _createView;
-        private IViewEdit _editView;
-        private IViewDetail _detailView;
-        private IViewDelete _deleteView;
-
+        private ViewCollection _views;
         private ICommandDispatcher _commandDispatcher;
         private IQueryDispatcher _queryDispatcher;
 
-        public IViewBase IndexView { get { return _indexView; } }
-        public IViewBase CreateView { get { return _createView; } }
-        public IViewBase EditView { get { return _editView; } }
-        public IViewBase DetailView { get { return _detailView; } }
-        public IViewBase DeleteView { get { return _deleteView; } }
+        public ViewCollection Views { get { return _views; } }
 
 
-        public PackageController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, IViewCreate createView, IViewIndex indexView, IViewEdit editView, IViewDetail detailView, IViewDelete deleteView)
+        public PackageController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, ViewCollection views)
         {
-            _indexView = indexView;
-            _createView = createView;
-            _editView = editView;
-            _detailView = detailView;
-            _deleteView = deleteView;
+            _views = views;
+            _views.SetController(this);
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
 
-            _indexView.SetController(this);
-            _createView.SetController(this);
-            _editView.SetController(this);
-            _detailView.SetController(this);
-            _deleteView.SetController(this);
         }
 
 
         public void LoadIndexView(Nullable<Guid> selectPackageId = null)
         {
-            _indexView.Initialize(selectPackageId);
+            _views.IndexView.Initialize(selectPackageId);
         }
 
         public void LoadEditView(PackageDto package)
         {
-            _editView.Initialize(package);
+            _views.EditView.Initialize(package);
         }
 
         public void LoadDetailView(PackageDto package)
         {
-            _detailView.Initialize(package);
+            _views.DetailView.Initialize(package);
         }
 
         public void LoadDeleteView(PackageDto package)
         {
-            _deleteView.Initialize(package);
+            _views.DeleteView.Initialize(package);
         }
-
-
 
 
         public void AddPackage(PackageDto package)
         {
-
             var command = new AddPackageCommand(package);
             _commandDispatcher.Submit(command);
         }

@@ -50,6 +50,7 @@
     <Compile Include="Dispatchers\ICommandHandler.cs" />
     <Compile Include="Dispatchers\ICommandDispatcher.cs" />
     <Compile Include="IViews\IView.cs" />
+    <Compile Include="IViews\IViewCollection.cs" />
     <Compile Include="IViews\IViewBase.cs" />
     <Compile Include="IViews\Main\IViewMain.cs" />
     <Compile Include="IViews\Package\IViewDelete.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="IViews\Package\IViewEdit.cs" />
     <Compile Include="IViews\Package\IViewCreate.cs" />
     <Compile Include="IViews\Package\IViewIndex.cs" />
+    <Compile Include="IViews\Package\ViewCollection.cs" />
     <Compile Include="Navigation\IRouter.cs" />
     <Compile Include="Navigation\RouteHandlers\IRouteHandler.cs" />
     <Compile Include="Navigation\RouteHandlers\PackageDeleteRouteHandler.cs" />
