@@ -24,7 +24,7 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
         public void Handle(PackageDetailRoute route)
         {
             _controller.LoadDetailView(route.Package);
-            _main.Display(_controller.DetailView);
+            _main.Display(_controller.Views.DetailView);
         }
     }
 }

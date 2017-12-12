@@ -24,7 +24,7 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
         public void Handle(PackageDeleteRoute route)
         {
             _controller.LoadDeleteView(route.Package);
-            _main.Display(_controller.DeleteView);
+            _main.Display(_controller.Views.DeleteView);
         }
     }
 }

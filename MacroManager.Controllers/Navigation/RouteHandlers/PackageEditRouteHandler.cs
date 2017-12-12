@@ -24,7 +24,7 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
         public void Handle(PackageEditRoute route)
         {
             _controller.LoadEditView(route.Package);
-            _main.Display(_controller.EditView);
+            _main.Display(_controller.Views.EditView);
         }
     }
 }

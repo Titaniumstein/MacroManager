@@ -24,7 +24,7 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
         public void Handle(PackageIndexRoute route)
         {
             _controller.LoadIndexView();
-            _main.Display(_controller.IndexView);
+            _main.Display(_controller.Views.IndexView);
         }
     }
 }
