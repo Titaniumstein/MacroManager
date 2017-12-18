@@ -12,7 +12,7 @@ namespace MacroManager.Infrastructure.Abstractions
         public void Initialize()
         {
             var container = Bootstrapper.Container;
-            var macroContextCallback = container.GetInstance<Services.MacroContextEventCallback>();
+            var macroContextCallback = container.GetInstance<Services.EventCallback>();
             macroContextCallback.CreateConnection();
             macroContextCallback.SubscribeToMessages();
         }
