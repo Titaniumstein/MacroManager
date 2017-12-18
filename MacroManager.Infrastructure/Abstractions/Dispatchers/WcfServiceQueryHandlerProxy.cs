@@ -17,7 +17,7 @@ namespace MacroManager.Infrastructure.Abstractions.Dispatchers
         public TResult Handle(TQuery query)
         {
 
-            var service = new MacroContextQueryProcessorChannelFactory();
+            var service = new QueryProcessorChannelFactory();
             service.InitializeChannel();
 
 

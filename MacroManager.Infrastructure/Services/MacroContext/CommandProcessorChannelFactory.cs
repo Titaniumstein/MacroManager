@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace MacroManager.Infrastructure.Services
+namespace MacroManager.Infrastructure.Services.MacroContext
 {
-    public class MacroContextCommandProcessorChannelFactory
+    public class CommandProcessorChannelFactory
     {
 
 

@@ -17,7 +17,7 @@ namespace MacroManager.Infrastructure.Abstractions.Dispatchers
         public void Execute(TCommand command)
         {
 
-            var service = new MacroContextCommandProcessorChannelFactory();
+            var service = new CommandProcessorChannelFactory();
             service.InitializeChannel();
 
 
