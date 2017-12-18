@@ -14,9 +14,11 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
     {
         private IViewMain _main;
         private PackageController _controller;
+        private IThreadDispatcher _dispatcher;
 
-        public PackageIndexRouteHandler(IViewMain main, PackageController controller)
+        public PackageIndexRouteHandler(IThreadDispatcher dispatcher, IViewMain main, PackageController controller)
         {
+            _dispatcher = dispatcher;
             _main = main;
             _controller = controller;
         }
@@ -24,7 +26,7 @@ namespace MacroManager.Controllers.Navigation.RouteHandlers
         public void Handle(PackageIndexRoute route)
         {
             _controller.LoadIndexView();
-            _main.Display(_controller.Views.IndexView);
+            _dispatcher.Dispatch(()=> _main.Display(_controller.Views.IndexView));
         }
     }
 }

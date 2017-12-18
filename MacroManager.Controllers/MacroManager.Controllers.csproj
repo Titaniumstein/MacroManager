@@ -35,20 +35,27 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\Orchestrator\IOrchestrator.cs" />
+    <Compile Include="Controllers\Orchestrator\OrchestratorController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Dispatchers\IQueryHandler.cs" />
     <Compile Include="Dispatchers\IQueryDispatcher.cs" />
     <Compile Include="Dispatchers\ICommandHandler.cs" />
     <Compile Include="Dispatchers\ICommandDispatcher.cs" />
+    <Compile Include="EventHandlers\IEventHandler.cs" />
+    <Compile Include="EventHandlers\PackageAddedEventHandler.cs" />
+    <Compile Include="IThreadDispatcher.cs" />
     <Compile Include="IViews\IView.cs" />
     <Compile Include="IViews\IViewCollection.cs" />
     <Compile Include="IViews\IViewBase.cs" />
@@ -59,6 +66,7 @@
     <Compile Include="IViews\Package\IViewCreate.cs" />
     <Compile Include="IViews\Package\IViewIndex.cs" />
     <Compile Include="IViews\Package\ViewCollection.cs" />
+    <Compile Include="IViews\Orchestrator\IViewStartup.cs" />
     <Compile Include="Navigation\IRouter.cs" />
     <Compile Include="Navigation\RouteHandlers\IRouteHandler.cs" />
     <Compile Include="Navigation\RouteHandlers\PackageDeleteRouteHandler.cs" />
