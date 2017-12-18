@@ -34,12 +34,23 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MacroManager.Infrastructure.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MacroContext.Contract">
       <HintPath>..\..\..\BoundedContexts\MacroContext\MacroContext.Contract\bin\Debug\MacroContext.Contract.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
@@ -71,7 +82,10 @@
     <Compile Include="Abstractions\Dispatchers\CommandDispatcher.cs" />
     <Compile Include="Abstractions\Dispatchers\WcfServiceQueryHandlerProxy.cs" />
     <Compile Include="Abstractions\Dispatchers\WcfServiceCommandHandlerProxy.cs" />
+    <Compile Include="Abstractions\EventProcessor.cs" />
+    <Compile Include="Abstractions\Orchestrator.cs" />
     <Compile Include="Abstractions\Router.cs" />
+    <Compile Include="Abstractions\ThreadDispatcher.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -82,8 +96,10 @@
     <Compile Include="IocInstallers\ViewsInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\MacroContextQueryProcessorChannelFactory.cs" />
-    <Compile Include="Services\MacroContextCommandProcessorChannelFactory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Services\MacroContext\EventCallback.cs" />
+    <Compile Include="Services\MacroContext\QueryProcessorChannelFactory.cs" />
+    <Compile Include="Services\MacroContext\CommandProcessorChannelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
