@@ -23,6 +23,7 @@ namespace MacroManager.ControllersTest.Controllers
             _controllerMockBundle = new PackageControllerMockBundle();
             _package = new PackageDto(Guid.NewGuid());
             _controller = new PackageController(
+                _controllerMockBundle.MockThreadDispatcher,
                 _controllerMockBundle.MockCommandDispatcher,
                 _controllerMockBundle.MockQueryDispatcher,
                 _controllerMockBundle.MockViews
@@ -32,10 +33,18 @@ namespace MacroManager.ControllersTest.Controllers
 
 
         [TestMethod]
+        public void LoadIndexView_CallsGetAllPackages()
+        {
+            var mockController = _controllerMockBundle.MockController;
+            mockController.LoadIndexView();
+            mockController.Received().GetAllPackages();
+        }
+
+        [TestMethod]
         public void LoadIndexView_WithoutDefaultSelection()
         {
             _controller.LoadIndexView();
-            _controllerMockBundle.MockIndexView.Received().Initialize(null);
+            _controllerMockBundle.MockIndexView.Received().Initialize(Arg.Any<PackageDto[]>(), null);
         }
 
         [TestMethod]

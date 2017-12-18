@@ -9,6 +9,7 @@ using MacroContext.Contract.Dto;
 using MacroContext.Contract.Queries;
 using MacroManager.Controllers.Dispatchers;
 using MacroContext.Contract.Commands;
+using MacroManager.Controllers;
 
 namespace MacroManager.Controllers.Controllers
 {
@@ -17,23 +18,26 @@ namespace MacroManager.Controllers.Controllers
         private ViewCollection _views;
         private ICommandDispatcher _commandDispatcher;
         private IQueryDispatcher _queryDispatcher;
+        private IThreadDispatcher _threadDispatcher;
 
         public ViewCollection Views { get { return _views; } }
 
 
-        public PackageController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, ViewCollection views)
+        public PackageController(IThreadDispatcher threadDispatcher, ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher, ViewCollection views)
         {
             _views = views;
             _views.SetController(this);
             _commandDispatcher = commandDispatcher;
             _queryDispatcher = queryDispatcher;
+            _threadDispatcher = threadDispatcher;
 
         }
 
 
         public void LoadIndexView(Nullable<Guid> selectPackageId = null)
         {
-            _views.IndexView.Initialize(selectPackageId);
+            var packages = this.GetAllPackages();
+            _threadDispatcher.Dispatch(()=>_views.IndexView.Initialize(packages, selectPackageId));
         }
 
         public void LoadEditView(PackageDto package)

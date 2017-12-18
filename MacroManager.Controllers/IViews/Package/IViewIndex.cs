@@ -1,4 +1,5 @@
-﻿using MacroManager.Controllers.Controllers;
+﻿using MacroContext.Contract.Dto;
+using MacroManager.Controllers.Controllers;
 using MacroManager.Controllers.IViews;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace MacroManager.Controllers.IViews.Package
 {
     public interface IViewIndex: IView<PackageController>
     {
-        void Initialize(Nullable<Guid> packageId = null);
+        void Initialize(PackageDto[] packages, Nullable<Guid> packageId = null);
 
     }
 }
