@@ -38,9 +38,9 @@ namespace MacroManager.Views.Package
 
         public string Text { get; set; }
 
-        public void Initialize(Guid? packageId = default(Guid?))
+        public void Initialize(PackageDto[] packages, Guid? packageId = default(Guid?))
         {
-            var packages = _controller.GetAllPackages();
+            //var packages = _controller.GetAllPackages();
             dgvPackages.ItemsSource = null;
             dgvPackages.ItemsSource = packages;
 

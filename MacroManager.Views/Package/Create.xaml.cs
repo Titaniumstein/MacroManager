@@ -48,7 +48,7 @@ namespace MacroManager.Views.Package
             pkg.Name = package.PackageName;
             pkg.Description = package.PackageDescription;
             _controller.AddPackage(pkg);
-            _router.GoTo(new PackageIndexRoute());
+            //_router.GoTo(new PackageIndexRoute());
         }
 
         
