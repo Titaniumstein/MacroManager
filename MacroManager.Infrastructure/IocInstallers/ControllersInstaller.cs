@@ -26,7 +26,6 @@ namespace MacroManager.Infrastructure.IocInstallers
             var controllerAssembly = typeof(IController).Assembly;
             var controllerRegistrations =
                 from type in controllerAssembly.GetExportedTypes()
-                where type.Namespace == typeof(IController).Namespace
                 where type.GetInterfaces().Contains(typeof(IController)) && type.IsClass
                 select new { Service = type.GetInterfaces().Single(), Implementation = type };
 
