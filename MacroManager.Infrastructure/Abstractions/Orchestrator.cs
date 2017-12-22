@@ -1,4 +1,5 @@
 ﻿using MacroManager.Controllers.Controllers.Orchestrator;
+using MacroManager.Infrastructure.Services.MacroContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MacroManager.Infrastructure.Abstractions
         public void Initialize()
         {
             var container = Bootstrapper.Container;
-            var macroContextCallback = container.GetInstance<Services.EventCallback>();
+            var macroContextCallback = container.GetInstance<EventCallback>();
             macroContextCallback.CreateConnection();
             macroContextCallback.SubscribeToMessages();
         }

@@ -7,6 +7,7 @@ using System.ServiceModel;
 
 using MacroManager.Controllers.Dispatchers;
 using MacroManager.Infrastructure.Services;
+using MacroManager.Infrastructure.Services.MacroContext;
 
 namespace MacroManager.Infrastructure.Abstractions.Dispatchers
 {

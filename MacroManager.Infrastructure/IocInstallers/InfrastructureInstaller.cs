@@ -13,6 +13,7 @@ using MacroManager.Controllers.Controllers.Orchestrator;
 using MacroManager.Infrastructure.Services;
 using MacroManager.Controllers.EventHandlers;
 using MacroManager.Controllers;
+using MacroManager.Infrastructure.Services.MacroContext;
 
 namespace MacroManager.Infrastructure.IocInstallers
 {
