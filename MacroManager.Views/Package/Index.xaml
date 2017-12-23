@@ -4,49 +4,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroManager.Views.Package"
+             xmlns:controls="clr-namespace:MacroManager.Views.Controls"
+
              mc:Ignorable="d" 
              d:DesignHeight="296.145" d:DesignWidth="300">
     <StackPanel>
-        <StackPanel  Orientation="Horizontal">
-            <Button Click="Add_Click">Add</Button>
-            <Button Click="Edit_Click">Edit</Button>
-            <Button Click="Detail_Click">Detail</Button>
-            <Button Click="Delete_Click">Delete</Button>
-        </StackPanel>
+        <controls:PageTitle Content="Packages"/>
+        <controls:PageContent>
+            <StackPanel>
+                <StackPanel  Orientation="Horizontal">
+                    <controls:MyButton Click="Add_Click">Add</controls:MyButton>
+                    <controls:MyButton Click="Edit_Click">Edit</controls:MyButton>
+                    <controls:MyButton Click="Detail_Click">Detail</controls:MyButton>
+                    <controls:MyButton Click="Delete_Click">Delete</controls:MyButton>
+                </StackPanel>
+                <ListBox
+                    x:Name="dgvPackages"
+                    SelectionChanged="dgvPackages_SelectionChanged"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    >
 
-
-        <DockPanel>
-        <DataGrid
-            x:Name="dgvPackages"
-            ItemsSource="{Binding Source=_packages}"
-            AutoGenerateColumns="False"
-            ColumnWidth="*"
-            SelectionUnit="FullRow"
-            SelectionMode="Single"
-            CanUserSortColumns="True"
-            IsReadOnly="True"
-            BorderBrush="Transparent"
-            HeadersVisibility="Column"
-            GridLinesVisibility="Vertical"
-            VerticalGridLinesBrush="Gray"
-            SelectionChanged="dgvPackages_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn
-                    x:Name="colName"
-                    Binding="{Binding Name}"
-                    Header="Name"
-                    Width="*"
-                    />
-                <DataGridTextColumn
-                    x:Name="colDescription"
-                    Binding="{Binding Description}"
-                    Header="Description"
-                    Width="*"
-                    />
-            </DataGrid.Columns>
-
-        </DataGrid>
-    
-    </DockPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock MaxHeight="50" Margin="5" TextWrapping="Wrap" VerticalAlignment="Center">
+                                    <Run
+                                        Text="{Binding Name}"
+                                        FontSize="14"
+                                        FontWeight="Bold"
+                                        />
+                                    <Run
+                                        Text="{Binding Description}"
+                                        
+                                        />
+                                </TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </controls:PageContent>
     </StackPanel>
 </UserControl>

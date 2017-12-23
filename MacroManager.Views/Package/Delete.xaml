@@ -4,20 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroManager.Views.Package"
+             xmlns:controls="clr-namespace:MacroManager.Views.Controls"
+
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <DockPanel LastChildFill="False">
-        <Label DockPanel.Dock="Top">Delete</Label>
-        <local:ReadPackage x:Name="packageControl" DockPanel.Dock="Top" />
-        <Button 
-                DockPanel.Dock="Bottom"
+    
+    <StackPanel>
+        <controls:PageTitle Content="Delete"/>
+        <controls:PageContent>
+            <StackPanel>
+                <local:ReadPackage x:Name="packageControl"/>
+                <controls:MyButton 
                 x:Name="delete"
                 Click="Delete_Click"
                 HorizontalAlignment="Left"
                 Content="Delete"
                 />
+            </StackPanel>
+        </controls:PageContent>
        
 
 
-    </DockPanel>
+    </StackPanel>
 </UserControl>

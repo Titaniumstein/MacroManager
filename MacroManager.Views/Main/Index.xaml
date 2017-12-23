@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Index" Height="574.662" Width="788.176">
     <DockPanel>
-        <local:NavBar x:Name="navBar" DockPanel.Dock="Top" />
-        <ContentControl x:Name="currentContent" Grid.Row="1"/>
+        <local:NavBar Background="AliceBlue" Title="MacroManager" x:Name="navBar" DockPanel.Dock="Top" />
+        <ContentControl Margin="40" x:Name="currentContent" Grid.Row="1"/>
     </DockPanel>
 </Window>

@@ -6,7 +6,24 @@
              xmlns:local="clr-namespace:MacroManager.Views.Main"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <StackPanel Orientation="Horizontal">
-        <Button Click="Packages_Click">Packages</Button>
-    </StackPanel>
+    
+    
+    <ContentControl Margin="5">
+        <DockPanel LastChildFill="False">
+        
+            <Label
+                x:Name="title"
+                FontSize="25"
+                VerticalContentAlignment="Center"
+                Content="Title"
+                />
+
+            <Button
+                Content="Packages"
+                DockPanel.Dock="Right"
+                Click="Packages_Click"
+                />
+        </DockPanel>
+    </ContentControl>
+
 </UserControl>

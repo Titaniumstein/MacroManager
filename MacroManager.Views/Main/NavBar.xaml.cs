@@ -37,6 +37,15 @@ namespace MacroManager.Views.Main
             _router = router;
         }
 
+
+        public string Title
+        {
+            get { return title.Content.ToString(); }
+            set { title.Content = value; }
+        }
+
+
+
         private void Packages_Click(object sender, RoutedEventArgs e)
         {
             _router.GoTo(new PackageIndexRoute());

@@ -4,18 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MacroManager.Views.Package"
+             xmlns:controls="clr-namespace:MacroManager.Views.Controls"
+
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <DockPanel LastChildFill="False">
-        <Label DockPanel.Dock="Top">Edit</Label>
-        <local:WritePackage x:Name="package" DockPanel.Dock="Top" />
-        <Button 
-                DockPanel.Dock="Bottom"
+    <StackPanel>
+        <controls:PageTitle Content="Edit"/>
+        <controls:PageContent>
+            <StackPanel>
+                <local:WritePackage x:Name="package" />
+                <controls:MyButton 
                 x:Name="save"
                 Click="Save_Click"
                 HorizontalAlignment="Left"
                 Content="Save"
                 />
 
-    </DockPanel>
+            </StackPanel>
+
+        </controls:PageContent>
+
+    </StackPanel>
 </UserControl>

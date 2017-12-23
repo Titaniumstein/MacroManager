@@ -38,6 +38,7 @@ namespace MacroManager.Views.Package
 
         public void Initialize(PackageDto package)
         {
+
             _package = package;
             this.packageControl.PackageName = _package.Name;
             this.packageControl.PackageDescription = _package.Description;
