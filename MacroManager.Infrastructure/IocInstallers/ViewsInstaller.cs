@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
-using MacroManager.Views.Package;
+using MacroManager.Views.Main;
 using MacroManager.Controllers.IViews;
 
 namespace MacroManager.Infrastructure.IocInstallers
